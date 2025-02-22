@@ -1,0 +1,11 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+
+commonLabels:
+  app.kubernetes.io/component: exporter
+  app.kubernetes.io/name: node-exporter
+
+commonAnnotations:
+  prometheus.io/scrape: 'true'
+  prometheus.io/port:   '9100'
