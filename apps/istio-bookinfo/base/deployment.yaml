@@ -26,34 +26,17 @@
 #   kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml -l app=reviews,version=v3 # reviews-v3 Deployment
 ##################################################################################################
 
-##################################################################################################
-# Details service
-##################################################################################################
-apiVersion: v1
-kind: Service
-metadata:
-  name: details
-  labels:
-    app: details
-    service: details
-spec:
-  ports:
-  - port: 9080
-    name: http
-  selector:
-    app: details
 ---
 apiVersion: v1
-kind: ServiceAccount
+kind: Namespace
 metadata:
-  name: bookinfo-details
-  labels:
-    account: details
+  name: bookinfo
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: details-v1
+  namespace: bookinfo
   labels:
     app: details
     version: v1
@@ -77,34 +60,11 @@ spec:
         ports:
         - containerPort: 9080
 ---
-##################################################################################################
-# Ratings service
-##################################################################################################
-apiVersion: v1
-kind: Service
-metadata:
-  name: ratings
-  labels:
-    app: ratings
-    service: ratings
-spec:
-  ports:
-  - port: 9080
-    name: http
-  selector:
-    app: ratings
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: bookinfo-ratings
-  labels:
-    account: ratings
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ratings-v1
+  namespace: bookinfo
   labels:
     app: ratings
     version: v1
@@ -128,34 +88,11 @@ spec:
         ports:
         - containerPort: 9080
 ---
-##################################################################################################
-# Reviews service
-##################################################################################################
-apiVersion: v1
-kind: Service
-metadata:
-  name: reviews
-  labels:
-    app: reviews
-    service: reviews
-spec:
-  ports:
-  - port: 9080
-    name: http
-  selector:
-    app: reviews
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: bookinfo-reviews
-  labels:
-    account: reviews
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reviews-v1
+  namespace: bookinfo
   labels:
     app: reviews
     version: v1
@@ -196,6 +133,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reviews-v2
+  namespace: bookinfo
   labels:
     app: reviews
     version: v2
@@ -236,6 +174,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reviews-v3
+  namespace: bookinfo
   labels:
     app: reviews
     version: v3
@@ -272,34 +211,11 @@ spec:
       - name: tmp
         emptyDir: {}
 ---
-##################################################################################################
-# Productpage services
-##################################################################################################
-apiVersion: v1
-kind: Service
-metadata:
-  name: productpage
-  labels:
-    app: productpage
-    service: productpage
-spec:
-  ports:
-  - port: 9080
-    name: http
-  selector:
-    app: productpage
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: bookinfo-productpage
-  labels:
-    account: productpage
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productpage-v1
+  namespace: bookinfo
   labels:
     app: productpage
     version: v1
