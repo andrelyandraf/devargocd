@@ -37,7 +37,7 @@ metadata:
   name: jenkins-pv-claim
   namespace: jenkins
 spec:
-  storageClassName: jenkins-storage
+  storageClassName: openebs-hostpath
   accessModes:
     - ReadWriteOnce
   resources:
