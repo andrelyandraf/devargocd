@@ -54,8 +54,6 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
-  local:
-    path: /mnt
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
