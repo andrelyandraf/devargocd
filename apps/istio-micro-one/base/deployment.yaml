@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-demo
+  namespace: micro-one
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro-one-app
+      version: v1
+  template:
+    metadata:
+      labels: 
+        app: micro-one-app
+        version: v1
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - name: grafana
+          containerPort: 80   
