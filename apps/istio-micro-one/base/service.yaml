@@ -12,3 +12,36 @@ spec:
     - port: 80
   selector:
     app: micro-one-app
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: micro-one-gateway
+  namespace: micro-one
+spec:
+  selector: 
+    istio: ingressgateway
+  servers:
+  - port:
+     number: 80
+     name: http
+     protocol: HTTP
+    hosts:
+    - "micro-one.demo" 
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: micro-one-virtual-service
+  namespace: micro-one
+spec:
+  hosts: 
+  - "micro-one.demo"
+  gateways:
+  - micro-one-gateway
+  http:
+  - route: 
+    - destination:
+      host: micro-one-app
+      port:
+        number: 80
