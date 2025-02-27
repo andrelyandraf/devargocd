@@ -13,7 +13,7 @@ spec:
   selector:
     app: micro-one-app
 ---
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
   name: micro-one-gateway
@@ -29,7 +29,7 @@ spec:
     hosts:
     - "micro-one.demo" 
 ---
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: micro-one-virtual-service
