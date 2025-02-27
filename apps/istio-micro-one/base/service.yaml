@@ -42,6 +42,6 @@ spec:
   http:
   - route: 
     - destination:
-      host: micro-one-app
-      port:
+       host: micro-one-app
+       port:
         number: 80
