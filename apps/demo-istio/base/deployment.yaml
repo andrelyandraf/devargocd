@@ -2,21 +2,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-istio-apps
+  name: nginx-istio
   namespace: demo-istio
 spec:
   replicas: 1
-  selector:
-   matchlabels:
-    app: demo-istio-apps
-    ver: 1
   template:
     metadata:
-     name: nginx
+      name: nginx
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: nginx:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
