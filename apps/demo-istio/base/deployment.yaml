@@ -13,13 +13,10 @@ spec:
   template:
     metadata:
      name: nginx
-    matchlabels:
-     app: demo-istio-apps
-     ver: 1
     spec:
       containers:
       - name: nginx
-        image: nginx:latest
+        image: nginx
         imagePullPolicy: Always
         ports:
         - containerPort: 80
