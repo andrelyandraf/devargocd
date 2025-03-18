@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-istio
+  name: istio-demo-nginx
   namespace: demo-istio
 spec:
   replicas: 1
