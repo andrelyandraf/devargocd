@@ -12,7 +12,7 @@ spec:
   replicas: 1
   template:
     metadata:
-      name: nginx-isito
+      name: nginx-istio
     spec:
       containers:
       - name: nginx
