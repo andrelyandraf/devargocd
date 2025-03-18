@@ -1,8 +1,10 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: demo-istio-service
-  namespace: demo-istio
+  name: nginx
+  namespace: nginx-istio
+  labels:
+    app: nginx-istio
 spec:
   type: NodePort
   ports:
