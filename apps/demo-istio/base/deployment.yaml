@@ -6,9 +6,13 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-istio
+  name: nginx-istio-demo
   namespace: nginx-istio
 spec:
+  selector:
+    matchLabels:
+      app: nginx-istio
+      ver: v1
   replicas: 1
   template:
     metadata:
