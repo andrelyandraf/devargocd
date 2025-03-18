@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-istio-service
+  namespace: demo-istio
+  labels:
+    app: demo-istio-service
+    ver: 1
+spec:
+  type: Nodeport
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: demo-istio-apps
