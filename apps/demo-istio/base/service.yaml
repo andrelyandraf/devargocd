@@ -7,7 +7,7 @@ metadata:
     app: demo-istio-apps
     ver: 1
 spec:
-  type: Nodeport
+  type: NodePort
   ports:
   - port: 80
     protocol: TCP
