@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: nginx-istio
+  labels: istio-injection=enabled
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -9,14 +10,11 @@ metadata:
   name: nginx-istio-demo
   namespace: nginx-istio
 spec:
-  selector:
-    matchLabels:
-      app: nginx-istio
-      ver: v1
-  replicas: 1
   template:
     metadata:
       name: nginx-istio
+      labels:
+       app: nginx-istio-demo
     spec:
       containers:
       - name: nginx
@@ -25,3 +23,7 @@ spec:
         ports:
         - containerPort: 80
           protocol: TCP
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-istio-demo
